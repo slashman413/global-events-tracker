@@ -345,7 +345,7 @@ const TEST_EVENTS = [
     category: "Military",
     severity: "critical",
     source: "Reuters / BBC",
-    url: "https://www.reuters.com",
+    url: "https://news.google.com/search?q=Taiwan+Strait+Military+Exercises+2026",
     timestamp: "2026-06-16T06:30:00Z",
     location: "Taiwan Strait, Asia-Pacific",
     lat: 24.5,
@@ -359,7 +359,7 @@ const TEST_EVENTS = [
     category: "Disaster",
     severity: "medium",
     source: "USGS / AP News",
-    url: "https://earthquake.usgs.gov",
+    url: "https://news.google.com/search?q=Yellowstone+seismic+swarm+2026",
     timestamp: "2026-06-15T14:00:00Z",
     location: "Yellowstone, Wyoming, USA",
     lat: 44.43,
@@ -373,7 +373,7 @@ const TEST_EVENTS = [
     category: "Technology",
     severity: "high",
     source: "Bloomberg / The Verge",
-    url: "https://www.theverge.com",
+    url: "https://news.google.com/search?q=AI+AGI+artificial+general+intelligence+2026",
     timestamp: "2026-06-16T09:00:00Z",
     location: "San Francisco, USA",
     lat: 37.77,
@@ -387,7 +387,7 @@ const TEST_EVENTS = [
     category: "Military",
     severity: "critical",
     source: "Al Jazeera / BBC",
-    url: "https://www.aljazeera.com",
+    url: "https://news.google.com/search?q=Gaza+ceasefire+2026",
     timestamp: "2026-06-16T03:15:00Z",
     location: "Gaza Strip, Middle East",
     lat: 31.35,
@@ -401,7 +401,7 @@ const TEST_EVENTS = [
     category: "Environment",
     severity: "high",
     source: "BBC / INPE Brazil",
-    url: "https://www.bbc.com/news",
+    url: "https://news.google.com/search?q=Amazon+deforestation+record+2026",
     timestamp: "2026-06-15T18:00:00Z",
     location: "Amazon Basin, Brazil",
     lat: -3.47,
@@ -519,7 +519,18 @@ function showCard(d) {
   document.getElementById('card-time').textContent    = formatTime(d.timestamp);
   document.getElementById('card-src').textContent     = d.source;
   document.getElementById('card-summary').textContent = d.summary;
-  document.getElementById('card-link').href           = d.url;
+  const _url = (() => {
+    try {
+      const u = new URL(d.url || '');
+      if (!u.pathname || u.pathname === '/') {
+        return 'https://news.google.com/search?q=' + encodeURIComponent(d.title);
+      }
+    } catch {}
+    return d.url || '#';
+  })();
+  const _isSearch = _url.includes('news.google.com');
+  document.getElementById('card-link').href        = _url;
+  document.getElementById('card-link').textContent = _isSearch ? 'Search Google News ↗' : 'Read full story ↗';
 
   const card = document.getElementById('info-card');
   card.classList.remove('visible');
