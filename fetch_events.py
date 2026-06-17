@@ -5,8 +5,18 @@ Fetches top 10 news per continent (6 continents = up to 60 events)
 Runs daily via GitHub Actions; outputs events_data.json for the 3D globe.
 
 Data Sources (all free, no API key):
-  BBC World Regional RSS  — Africa / Asia / Europe / Americas / Middle East
-  ABC Australia RSS       — Oceania
+  BBC World Regional RSS   — Africa / Asia / Europe / Americas / Middle East
+  Reuters                  — Asia / Europe / Americas
+  Al Jazeera               — Africa / Middle East
+  DW (Deutsche Welle)      — Africa / Asia / Oceania (world)
+  AllAfrica                — Africa
+  Channel NewsAsia (CNA)   — Asia
+  The Hindu International  — Asia
+  Euronews                 — Europe
+  The Guardian World       — Europe
+  France 24                — Americas / Middle East
+  Arab News                — Middle East
+  ABC Australia / RNZ      — Oceania
   Geocoding: Nominatim (OpenStreetMap), 1 req/sec
 
 Usage:
@@ -30,26 +40,33 @@ CONTINENTS = {
         "feeds": [
             ("BBC Africa",   "http://feeds.bbci.co.uk/news/world/africa/rss.xml"),
             ("Al Jazeera",   "https://www.aljazeera.com/xml/rss/all.xml"),
+            ("DW Africa",    "https://rss.dw.com/rdf/rss-en-africa"),
+            ("AllAfrica",    "https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf"),
         ],
         "keywords": [
             "africa","kenya","nigeria","ethiopia","egypt","ghana","tanzania","uganda",
             "cameroon","senegal","mali","niger","chad","somalia","sudan","zimbabwe",
             "mozambique","angola","zambia","rwanda","congo","libya","tunisia","algeria",
-            "morocco","south africa","madagascar","ivory coast","burkina",
+            "morocco","south africa","madagascar","ivory coast","burkina","sahel",
+            "eritrea","djibouti","malawi","botswana","namibia","lesotho","eswatini",
         ],
     },
     "Asia": {
         "color":          "#ef4444",
         "default_coords": (34.05, 100.62),
         "feeds": [
-            ("BBC Asia",     "http://feeds.bbci.co.uk/news/world/asia/rss.xml"),
-            ("Reuters Asia", "https://feeds.reuters.com/reuters/asiaNews"),
+            ("BBC Asia",        "http://feeds.bbci.co.uk/news/world/asia/rss.xml"),
+            ("Reuters Asia",    "https://feeds.reuters.com/reuters/asiaNews"),
+            ("Channel NewsAsia","https://www.channelnewsasia.com/rssfeeds/8395884"),
+            ("The Hindu Intl",  "https://www.thehindu.com/news/international/feeder/default.rss"),
+            ("DW Asia",         "https://rss.dw.com/rdf/rss-en-asia"),
         ],
         "keywords": [
             "china","japan","india","korea","indonesia","thailand","philippines",
             "vietnam","malaysia","myanmar","pakistan","bangladesh","sri lanka",
             "cambodia","taiwan","hong kong","singapore","nepal","bhutan",
             "kazakhstan","uzbekistan","mongolia","laos","tibet","xinjiang",
+            "asean","south china sea","east china sea","indo-pacific","mekong",
         ],
     },
     "Europe": {
@@ -58,13 +75,16 @@ CONTINENTS = {
         "feeds": [
             ("BBC Europe",   "http://feeds.bbci.co.uk/news/world/europe/rss.xml"),
             ("Reuters EU",   "https://feeds.reuters.com/reuters/europeanews"),
+            ("Euronews",     "https://www.euronews.com/rss?format=mrss&level=theme&name=news"),
+            ("The Guardian", "https://www.theguardian.com/world/rss"),
         ],
         "keywords": [
             "europe","france","germany","uk","britain","russia","italy","spain",
             "ukraine","poland","netherlands","belgium","sweden","norway","denmark",
             "finland","austria","switzerland","greece","turkey","hungary","romania",
             "czechia","slovakia","serbia","croatia","bulgaria","moldova","georgia",
-            "nato","eu","european union","brexit","schengen","eurozone",
+            "nato","eu","european union","brexit","schengen","eurozone","estonia",
+            "latvia","lithuania","luxembourg","ireland","portugal","albania","kosovo",
         ],
     },
     "Americas": {
@@ -74,12 +94,14 @@ CONTINENTS = {
             ("BBC US",       "http://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml"),
             ("BBC LatAm",    "http://feeds.bbci.co.uk/news/world/latin_america/rss.xml"),
             ("Reuters US",   "https://feeds.reuters.com/reuters/domesticNews"),
+            ("France 24",    "https://www.france24.com/en/rss"),
         ],
         "keywords": [
             "united states","usa","america","canada","brazil","mexico","argentina",
             "colombia","chile","peru","venezuela","cuba","haiti","honduras","guatemala",
             "nicaragua","ecuador","bolivia","uruguay","paraguay","caribbean",
             "washington","new york","california","texas","congress","senate",
+            "trump","biden","white house","pentagon","latin america","amazon",
         ],
     },
     "Middle East": {
@@ -88,12 +110,15 @@ CONTINENTS = {
         "feeds": [
             ("BBC MidEast",  "http://feeds.bbci.co.uk/news/world/middle_east/rss.xml"),
             ("Al Jazeera",   "https://www.aljazeera.com/xml/rss/all.xml"),
+            ("Arab News",    "https://www.arabnews.com/rss.xml"),
+            ("France 24",    "https://www.france24.com/en/rss"),
         ],
         "keywords": [
             "israel","iran","iraq","syria","saudi arabia","lebanon","jordan","turkey",
             "yemen","qatar","kuwait","bahrain","oman","uae","dubai","abu dhabi",
             "gaza","west bank","palestine","hamas","hezbollah","houthi",
-            "persian gulf","red sea","suez","middle east",
+            "persian gulf","red sea","suez","middle east","riyadh","tehran",
+            "idf","irgc","ceasefire","hostage","rafah","netanyahu","khamenei",
         ],
     },
     "Oceania": {
@@ -102,11 +127,13 @@ CONTINENTS = {
         "feeds": [
             ("ABC Australia","https://www.abc.net.au/news/feed/2942460/rss.xml"),
             ("RNZ NZ",       "https://www.rnz.co.nz/rss/world.xml"),
+            ("DW World",     "https://rss.dw.com/rdf/rss-en-world"),
         ],
         "keywords": [
             "australia","new zealand","papua new guinea","fiji","solomon islands",
             "vanuatu","samoa","tonga","pacific","sydney","melbourne","auckland",
             "canberra","wellington","queensland","victoria","wildfire","reef",
+            "indonesia","timor","micronesia","kiribati","nauru","palau","marshall",
         ],
     },
 }
