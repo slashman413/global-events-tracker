@@ -1,0 +1,35 @@
+name: Daily Events Update
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 6:00 AM UTC every day (2 PM Taiwan time)
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests feedparser geopy
+
+      - name: Fetch global events
+        run: python fetch_events.py
+
+      - name: Commit updated events
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add events_data.json geo_cache.json || true
+          git diff --staged --quiet || git commit -m "chore: daily events update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
