@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T16:29:03.108217+00:00",
+  "updated": "2026-06-17T17:32:26.050575+00:00",
   "total": 56,
   "events": [
     {
@@ -92,7 +92,7 @@
       "severity": "high",
       "source": "BBC Africa",
       "url": "https://www.bbc.com/news/articles/cvgep4l397eo?at_medium=RSS&at_campaign=rss",
-      "timestamp": "2026-06-17T11:26:39+00:00",
+      "timestamp": "2026-06-17T16:50:42+00:00",
       "location": "Congo",
       "lat": -2.9814,
       "lon": 23.8223,
@@ -451,6 +451,22 @@
       "color": "#8b5cf6"
     },
     {
+      "id": "371088ab",
+      "title": "'I was not thinking to run a world record'",
+      "summary": "Kenya's new sporting icon Sabastian Sawe admits his world record time at the London Marathon came as a surprise.",
+      "category": "General",
+      "icon": "📰",
+      "continent": "Africa",
+      "severity": "low",
+      "source": "BBC Africa",
+      "url": "https://www.bbc.com/sport/athletics/videos/c78q5nq11zwo?at_medium=RSS&at_campaign=rss",
+      "timestamp": "2026-04-28T11:18:38+00:00",
+      "location": "London",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "color": "#f59e0b"
+    },
+    {
       "id": "2b319a84",
       "title": "Joy as record-breaking runner Sawe returns home",
       "summary": "BBC reports from Kenya, home to Sabastian Sawe, the first man to run a marathon in under two hours.",
@@ -512,22 +528,6 @@
       "location": "South Africa",
       "lat": -28.8166,
       "lon": 24.9916,
-      "color": "#f59e0b"
-    },
-    {
-      "id": "bd91613b",
-      "title": "Who is the Somali referee barred from entering the US for the World Cup?",
-      "summary": "Omar Artan was set to become the first Somali to referee a game at the World Cup finals, but his place in history has been denied by US immigration authorities.",
-      "category": "General",
-      "icon": "📰",
-      "continent": "Africa",
-      "severity": "low",
-      "source": "BBC Africa",
-      "url": "https://www.bbc.com/news/articles/c8j27zkp94zo?at_medium=RSS&at_campaign=rss",
-      "timestamp": "2026-06-09T15:09:23+00:00",
-      "location": "Africa",
-      "lat": 8.78,
-      "lon": 34.51,
       "color": "#f59e0b"
     },
     {
@@ -707,19 +707,19 @@
       "color": "#ef4444"
     },
     {
-      "id": "6a2c57f4",
-      "title": "U.S. military to build war-ready stockpile in Australia",
-      "summary": "Marine Corps activities in Australia support integrated global sustainment by maintaining ready-for-issue equipment and supplies for operations and exercises across the Indo-Pacific, said a U.S. Marine Corps Forces Pacific spokesperson",
+      "id": "18248c81",
+      "title": "South Korea's Lee asks Trump to lead peaceful diplomacy with North Korea",
+      "summary": "South Korean President Lee Jae Myung asked US counterpart Donald Trump to lead efforts to resolve the North Korea issue peacefully, as he had done with the war in the Middle East, according to Lee's office.",
       "category": "Military",
       "icon": "💥",
       "continent": "Asia",
       "severity": "low",
-      "source": "The Hindu Intl",
-      "url": "https://www.thehindu.com/news/international/us-military-to-build-war-ready-stockpile-in-australia/article71110421.ece",
-      "timestamp": "2026-06-16T17:20:44+00:00",
-      "location": "Australia",
-      "lat": -24.7761,
-      "lon": 134.755,
+      "source": "Channel NewsAsia",
+      "url": "https://www.channelnewsasia.com/east-asia/south-korea-lee-jae-myung-donald-trump-lead-diplomacy-north-6188401",
+      "timestamp": "2026-06-17T02:11:00+00:00",
+      "location": "South Korea",
+      "lat": 36.6384,
+      "lon": 127.6961,
       "color": "#ef4444"
     },
     {
