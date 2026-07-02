@@ -5,9 +5,14 @@ on:
     - cron: '0 6 * * *'   # 6:00 AM UTC every day (2 PM Taiwan time)
   workflow_dispatch:        # allow manual trigger from GitHub UI
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
 
@@ -33,3 +38,14 @@ jobs:
           git add events_data.json geo_cache.json || true
           git diff --staged --quiet || git commit -m "chore: daily events update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
+
+  notify-failure:
+    needs: [update]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord failure alert
+        run: >-
+          curl -sf -H "Content-Type: application/json"
+          -d '{"content": "\ud83d\udd34 ${{ github.repository }} \u2014 ${{ github.workflow }} \u6392\u7a0b\u5931\u6557 \u00b7 ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+          "${{ secrets.DISCORD_WEBHOOK }}" || true
