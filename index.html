@@ -102,6 +102,39 @@
   /* ── Credit ── */
   .credit { position: fixed; bottom: 16px; right: 20px; font-size: 10px; color: #25254a; z-index: 10; }
   .credit a { color: #35356a; text-decoration: none; }
+
+  /* ── Product CTA ── */
+  .cta-bar {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 18px; z-index: 20;
+    background: rgba(6,6,18,.82);
+    border: 1px solid rgba(255,255,255,.07);
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    backdrop-filter: blur(14px);
+    font-size: 11.5px; white-space: nowrap;
+    pointer-events: all;
+  }
+  .cta-label { color: #30304a; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; margin-right: 4px; }
+  .cta-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 13px; border-radius: 99px; text-decoration: none;
+    font-size: 11.5px; font-weight: 600; transition: all .18s;
+  }
+  .cta-link-saas {
+    color: #a78bfa;
+    background: rgba(167,139,250,.1);
+    border: 1px solid rgba(167,139,250,.25);
+  }
+  .cta-link-saas:hover { background: rgba(167,139,250,.2); border-color: rgba(167,139,250,.5); color: #c4b5fd; }
+  .cta-link-tw {
+    color: #34d399;
+    background: rgba(52,211,153,.1);
+    border: 1px solid rgba(52,211,153,.25);
+  }
+  .cta-link-tw:hover { background: rgba(52,211,153,.2); border-color: rgba(52,211,153,.5); color: #6ee7b7; }
+  .cta-sep { color: #1e1e38; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY95FHB8JG"></script>
@@ -317,5 +350,23 @@ fetch('events_data.json')
 </script>
 <footer style="text-align:center;padding:16px;font-size:12px;color:#94a3b8"><div class="reco-widget" data-cat="finance"></div><script src="https://slashmantools.us/reco-widget.js" defer></script><a href="https://ko-fi.com/ytstories0413" target="_blank" rel="noopener" onclick="try{gtag('event','kofi_click')}catch(e){}" style="color:#ff5e5b;text-decoration:none">☕ Ko-fi 抖內</a> · <a href="https://slashmantools.us/terms.html" style="color:#94a3b8;text-decoration:none">服務說明</a> · <a href="https://slashmantools.us/privacy.html" style="color:#94a3b8;text-decoration:none">隱私權政策</a></footer>
 <div id="vc-sm" style="text-align:center;font-size:11px;color:#888;margin:14px 0;opacity:.85;font-family:sans-serif"></div><script>fetch("https://abacus.jasoncameron.dev/hit/sm413-global/views").then(function(r){return r.json()}).then(function(d){var e=document.getElementById("vc-sm");if(e)e.textContent="\u{1F441} "+Number(d.value).toLocaleString()+" 次瀏覽 · views";}).catch(function(){});</script><div style="text-align:center;padding:16px;font-size:12px;font-family:sans-serif;background:#0a0a0f"><a href="https://slashmantools.us/" style="color:#8888c0;text-decoration:none">← AI工具人 首頁</a> &nbsp;·&nbsp; <a href="https://slashmantools.us/tools/" style="color:#8888c0;text-decoration:none">🧰 More free tools</a></div>  <script src="https://slashmantools.us/kofi-widget.js" defer></script>
+
+<!-- Product CTA — idempotent: keyed by id="cta-products" -->
+<div id="cta-products" class="cta-bar">
+  <span class="cta-label">From the maker</span>
+  <a class="cta-link cta-link-saas"
+     href="https://slashman413.gumroad.com/l/saas-starter?utm_source=events-tracker&amp;utm_medium=web&amp;utm_campaign=global-events-tracker"
+     target="_blank" rel="noopener"
+     onclick="try{gtag('event','cta_click',{link_id:'saas-starter'})}catch(e){}">
+    SaaS Starter Kit ↗
+  </a>
+  <span class="cta-sep">·</span>
+  <a class="cta-link cta-link-tw"
+     href="https://slashman413.github.io/twse-backtests/?utm_source=events-tracker&amp;utm_medium=web&amp;utm_campaign=global-events-tracker"
+     target="_blank" rel="noopener"
+     onclick="try{gtag('event','cta_click',{link_id:'twse-backtests'})}catch(e){}">
+    台股大飆股 DNA 量化訊號 ↗
+  </a>
+</div>
 </body>
 </html>
